@@ -1,8 +1,6 @@
 import { Http, BaseRequestOptions, Response, ResponseOptions, Headers, RequestMethod } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { inject, TestBed } from '@angular/core/testing';
-import { ActivatedRoute, RouterState, Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
 
 import { Angular2TokenService } from './angular2-token.service';
 import {
@@ -48,13 +46,9 @@ describe('Angular2TokenService', () => {
 	beforeEach(() => {
 		// Inject HTTP and Angular2TokenService
 		TestBed.configureTestingModule({
-			imports: [
-				RouterTestingModule
-			],
 			providers: [
 				BaseRequestOptions,
 				MockBackend,
-				{ provide: ActivatedRoute, useClass: Mock },
 				{
 					provide: Http,
 					useFactory: (backend, defaultOptions) => { return new Http(backend, defaultOptions) },

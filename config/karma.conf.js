@@ -20,6 +20,17 @@ module.exports = function(config) {
             html: './coverage/html'
         },
 
+        plugins: [
+          require('karma-jasmine'),
+            require('karma-phantomjs-launcher'),
+            require('karma-remap-coverage'),
+            require('karma-mocha-reporter'),
+            require('karma-coverage'),
+            require('karma-webpack'),
+            require('karma-sourcemap-loader'),
+
+        ],
+
         webpackMiddleware: { stats: 'errors-only'},
         reporters: [ 'mocha', 'coverage', 'remap-coverage' ],
         port: 9876,
@@ -27,9 +38,7 @@ module.exports = function(config) {
         logLevel: config.LOG_INFO,
         autoWatch: false,
 
-        browsers: [
-            'Chrome'
-        ],
+        browsers: [ 'PhantomJS' ],
 
         customLaunchers: {
             ChromeTravisCi: {
