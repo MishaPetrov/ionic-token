@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  angular:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - npm_global:/home/node/.npm-global
+      - .:/home/node/application
+    command: "npm run test"
+
+volumes:
+  npm_global: {}
